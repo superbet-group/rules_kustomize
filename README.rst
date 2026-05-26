@@ -123,18 +123,18 @@ In order to use these rules in your Bazel project, you must instruct Bazel to do
 
 .. code:: bazel
 
-    bazel_dep(name = "rules_kustomize", version = "0.5.2")
+    bazel_dep(name = "rules_kustomize", version = "0.5.3")
 
-This declaration registers a particular version of the :tool:`helm` and :tool:`kustomize` tools, respectively. By default, it registers `the latest version known to the rules <Tool Versions_>`_. You can specify a preferred version for each tool by supplying the known version slug (e.g. "v5.7.1") as an argument to the respective module extension's :field:`download` tag.
+This declaration registers a particular version of the :tool:`helm` and :tool:`kustomize` tools, respectively. By default, it registers `the latest version known to the rules <Tool Versions_>`_. You can specify a preferred version for each tool by supplying the known version slug (e.g. "v5.8.0") as an argument to the respective module extension's :field:`download` tag.
 
 .. code:: bazel
 
-    bazel_dep(name = "rules_kustomize", version = "0.5.2")
+    bazel_dep(name = "rules_kustomize", version = "0.5.3")
 
     kustomize = use_extension("@rules_kustomize//kustomize:extensions.bzl", "kustomize")
-    kustomize.download(version = "v5.7.1")
+    kustomize.download(version = "v5.8.0")
     helm = use_extension("@rules_kustomize//kustomize:extensions.bzl", "helm")
-    helm.download(version = "v3.13.1")
+    helm.download(version = "v3.19.0")
 
 If any number of modules wind up specifying different version values for these tags, the latest version—per :term:`Semantic Versioning` sorting—among the proposed candidate versions wins. If any of the tags also include the :field:`tolerate_newer` attribute with a value of :value:`False`, then no competing version newer than that tag's proposed version can win.
 
@@ -147,7 +147,8 @@ At present, these rules can load the following versions of these tools:
 
 * :tool:`kustomize`
 
-  * `v5.8.0 <https://github.com/kubernetes-sigs/kustomize/releases/tag/kustomize%2Fv5.8.0>`__ (default)
+  * `v5.8.1 <https://github.com/kubernetes-sigs/kustomize/releases/tag/kustomize%2Fv5.8.1>`__ (default)
+  * `v5.8.0 <https://github.com/kubernetes-sigs/kustomize/releases/tag/kustomize%2Fv5.8.0>`__
   * `v5.7.1 <https://github.com/kubernetes-sigs/kustomize/releases/tag/kustomize%2Fv5.7.1>`__
   * `v5.7.0 <https://github.com/kubernetes-sigs/kustomize/releases/tag/kustomize%2Fv5.7.0>`__
   * `v5.6.0 <https://github.com/kubernetes-sigs/kustomize/releases/tag/kustomize%2Fv5.6.0>`__
@@ -155,7 +156,8 @@ At present, these rules can load the following versions of these tools:
 
 * :tool:`helm`
 
-  * `v3.19.0 <https://github.com/helm/helm/releases/tag/v3.19.0>`__ (default)
+  * `v4.1.1 <https://github.com/helm/helm/releases/tag/v4.1.1>`__ (default)
+  * `v3.19.0 <https://github.com/helm/helm/releases/tag/v3.19.0>`__
   * `v3.17.4 <https://github.com/helm/helm/releases/tag/v3.17.4>`__
   * `v3.17.3 <https://github.com/helm/helm/releases/tag/v3.17.3>`__
   * `v3.13.1 <https://github.com/helm/helm/releases/tag/v3.13.1>`__
